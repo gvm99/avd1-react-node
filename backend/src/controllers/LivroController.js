@@ -45,12 +45,8 @@ module.exports = {
   // Exclui o livro
   async destroy(req, res) {
     const { id } = req.params;
-    const book = await Book.findById(id);
-    fs.unlink(`./uploads/${book.filePath}`, function (err) {
-      if (err) return res.json({ message: err });
-      book.remove();
-      return res.json({ message: "Livro deletado com sucesso" });
-    });
+    await Livro.findByIdAndRemove(id);
+    return res.send()
   },
 
   

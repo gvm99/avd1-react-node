@@ -44,8 +44,7 @@ export default class Clientes extends Component {
         {
             headers: {'Content-Type': 'multipart/form-data' }
         })
-        
-        console.log(response)
+        window.location.href = "/listalivro"
     }    
 
     render() {
@@ -66,7 +65,7 @@ export default class Clientes extends Component {
                     type="text"
                     name="nomeLivro"
                     id="nomeLivro"
-                    placeholder="Digite seu e-mail"
+                    placeholder="Digite o nome do livro"
                     value={nomeLivro}
                     onChange = { e => this.setState({ nomeLivro: e.target.value })}
                 />

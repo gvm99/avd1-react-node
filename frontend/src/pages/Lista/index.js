@@ -33,6 +33,12 @@ export default class Clientes extends Component {
         const pageNumber = page + 1
         this.componentDidMount(pageNumber)
     }
+    handleDelete = async (id) => {
+        if(window.confirm('Você está excluindo um livro, deseja prosseguir')){
+            await api.delete(`/livros/${id}`)
+            this.componentDidMount()
+        }
+    }
     prevPage = () =>{
         const {page, livrosInfo} = this.state
         if (page === 1) return;
@@ -66,7 +72,7 @@ export default class Clientes extends Component {
                                 <td>{e.editora}</td>
                                 <td>{e.numeroPaginas}</td>
                                 <td>
-                                    <ButtonTable tipo="del">Excluir</ButtonTable>
+                                    <ButtonTable onClick={()=>this.handleDelete(e._id)} tipo="del" >Excluir</ButtonTable>
                                 </td>
                             </tr>
                         ))}

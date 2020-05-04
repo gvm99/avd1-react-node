@@ -7,5 +7,6 @@ const routes = new Router();
 const upload = multer(uploadConfig)
 routes.post('/livros', upload.single('image'), LivroController.store)
 routes.get('/listaLivros', LivroController.index)
+routes.delete('/livros/:id', LivroController.destroy)
 
 module.exports = routes
